@@ -1,0 +1,52 @@
+@import "../../../styles.scss";
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+
+  .item-preview-container {
+    position: relative;
+    margin-block-start: 1px;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+      transition: 0.1s;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 1;
+      bottom: 1px;
+
+      .remove-btn {
+        display: initial;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 1em;
+        transform: translateY(-50%);
+        height: 75%;
+        border: none;
+        font-weight: bold;
+        background: none;
+        border-radius: 50%;
+        aspect-ratio: 1;
+        transition: 0.1s;
+
+        &:hover {
+          background-color: rgba(black, 0.1);
+        }
+
+        &::after {
+          content: "X";
+          color: $fclr1;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

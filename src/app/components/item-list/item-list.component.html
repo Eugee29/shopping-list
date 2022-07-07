@@ -1,0 +1,10 @@
+<ul class="item-list">
+  <li class="item-preview-container" *ngFor="let shoppingItem of shoppingItems">
+    <item-preview [shoppingItem]="shoppingItem"></item-preview>
+    <button
+      class="remove-btn"
+      (click)="onRemoveItem(shoppingItem.id)"
+      hidden
+    ></button>
+  </li>
+</ul>

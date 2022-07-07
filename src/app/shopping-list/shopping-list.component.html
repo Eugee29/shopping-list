@@ -1,0 +1,17 @@
+<main class="shopping-list">
+  <h1 class="app-title">Shopping List</h1>
+  <form class="add-item-form" (ngSubmit)="addItem()">
+    <input
+      class="item-input"
+      type="text"
+      placeholder="Item"
+      [(ngModel)]="newItemName"
+      name="itemName"
+    />
+    <button class="add-btn"></button>
+  </form>
+  <item-list
+    [shoppingItems]="shoppingItems$ | async"
+    (removeItem)="removeItem($event)"
+  ></item-list>
+</main>

@@ -1,0 +1,48 @@
+@import "../../styles.scss";
+
+.shopping-list {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  max-width: 25rem;
+  margin: auto;
+
+  .app-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1em;
+    background-color: $clr3;
+  }
+
+  .add-item-form {
+    display: flex;
+    font-size: 0.75rem;
+
+    .item-input {
+      flex-grow: 1;
+      border: none;
+      outline: none;
+      padding: 0.75em;
+    }
+
+    .add-btn {
+      border: none;
+      border-inline-start: 2px solid $clr3;
+      background-color: $clr4;
+      color: $fclr2;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &::after {
+        content: "+";
+        font-size: 1rem;
+      }
+
+      &:hover {
+        background-color: darken($color: $clr4, $amount: 5);
+      }
+    }
+  }
+}
