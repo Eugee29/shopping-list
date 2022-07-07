@@ -8,6 +8,8 @@ import { ShoppingReducer } from './store/reducers/shopping.reducer';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { ItemPreviewComponent } from './components/item-preview/item-preview.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, ItemListComponent, ItemPreviewComponent, ShoppingListComponent],
@@ -17,6 +19,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     StoreModule.forRoot({
       shopping: ShoppingReducer,
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
