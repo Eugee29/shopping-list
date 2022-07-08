@@ -10,16 +10,29 @@ import { ItemPreviewComponent } from './components/item-preview/item-preview.com
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { ShoppingEffects } from './store/effects/shopping.effects';
 
 @NgModule({
-  declarations: [AppComponent, ItemListComponent, ItemPreviewComponent, ShoppingListComponent],
+  declarations: [
+    AppComponent,
+    ItemListComponent,
+    ItemPreviewComponent,
+    ShoppingListComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     StoreModule.forRoot({
       shopping: ShoppingReducer,
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([ShoppingEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

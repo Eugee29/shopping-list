@@ -1,5 +1,11 @@
 <main class="shopping-list">
-  <h1 class="app-title">Shopping List</h1>
+  <h1
+    class="app-title"
+    [class.loading]="loading$ | async"
+    [class.error]="error$ | async"
+  >
+    Shopping List
+  </h1>
   <form class="add-item-form" (ngSubmit)="addItem()">
     <input
       class="item-input"

@@ -12,6 +12,14 @@
     text-transform: uppercase;
     padding: 1em;
     background-color: $clr3;
+
+    &.loading {
+      background-color: $clr5;
+    }
+
+    &.error {
+      background-color: $clr6;
+    }
   }
 
   .add-item-form {

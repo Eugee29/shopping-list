@@ -15,12 +15,7 @@
     }
 
     &:hover {
-      transform: scale(1.01);
-      transition: 0.1s;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-      position: relative;
-      z-index: 1;
-      bottom: 1px;
+      outline: 1px solid $clr4;
 
       .remove-btn {
         display: initial;
