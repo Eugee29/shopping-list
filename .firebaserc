@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "shopping-list-3be7a"
+  },
+  "targets": {
+    "shopping-list-3be7a": {
+      "hosting": {
+        "shopping-list": [
+          "shopping-list-3be7a"
+        ]
+      }
+    }
+  }
+}

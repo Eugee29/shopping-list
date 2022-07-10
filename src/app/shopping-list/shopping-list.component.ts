@@ -8,7 +8,6 @@ import {
 } from '../store/actions/shopping.actions';
 import { AppState } from '../store/models/app-state.model';
 import { ShoppingItem } from '../store/models/shopping-item.model';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'shopping-list',
@@ -33,7 +32,7 @@ export class ShoppingListComponent implements OnInit {
   addItem() {
     if (!this.newItemName) return;
     this.store.dispatch(
-      new AddItemAction({ id: uuidv4(), name: this.newItemName })
+      new AddItemAction({ name: this.newItemName } as ShoppingItem)
     );
     this.newItemName = '';
   }

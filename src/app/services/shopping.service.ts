@@ -1,25 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ShoppingItem } from '../store/models/shopping-item.model';
-import { delay, Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import {
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  Firestore,
+  setDoc,
+} from '@angular/fire/firestore';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShoppingService {
-  private SHOPPING_URL = 'http://localhost:3000/shopping';
-
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   query(): Observable<ShoppingItem[]> {
-    return this.http.get<ShoppingItem[]>(this.SHOPPING_URL).pipe(delay(500)); // adding delay to simulate server response
+    const itemCollection = collection(this.firestore, 'item');
+    return collectionData(itemCollection) as Observable<ShoppingItem[]>;
   }
 
   add(item: ShoppingItem) {
-    return this.http.post(this.SHOPPING_URL, item);
+    item = { ...item, id: uuidv4() };
+    const itemCollection = collection(this.firestore, 'item');
+    setDoc(doc(itemCollection, item.id), item);
+    return of(item);
   }
 
   remove(id: string) {
-    return this.http.delete(`${this.SHOPPING_URL}/${id}`);
+    const itemCollection = collection(this.firestore, 'item');
+    deleteDoc(doc(itemCollection, id));
+    return of(1);
   }
 }
